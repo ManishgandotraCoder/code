@@ -1,26 +1,46 @@
-Run Project 
+## Installation Guide
 
-1. For Front end 
+### Requirements
+- [Nodejs](https://nodejs.org/en/download)
+- [Mongodb](https://www.mongodb.com/docs/manual/administration/install-community/)
 
-    Go to client-side directory 
-    Run npm install
-    Then Run npm start
+Both should be installed and make sure mongodb is running.
 
-2. For Back end 
+```shell
+git clone https://github.com/koolkishan/chat-app-react-nodejs
+cd chat-app-react-nodejs
+```
+Now rename env files from .env.example to .env
+```shell
+cd client-side
+mv .env.example .env
+cd ..
+cd server-side
+mv .env.example .env
+cd ..
+```
 
-    Go to server-side directory 
-    Run npm install
-    Then Run npm start
+Now install the dependencies
+```shell
+cd server-side
+yarn
+cd ..
+cd client-side
+yarn
+```
+We are almost done, Now just start the development server.
 
-Frontend (React):
+For Frontend.
+```shell
+cd public
+yarn start
+```
+For Backend.
 
-Develop a login form with proper error handling.
-![Alt text](image-1.png)
-Implement a chat feature using Socket.io, allowing user to send and receive messages.
-![Alt text](image-2.png)
-Backend (Node.js):
-Develop a Node.js server to handle user authentication and real-time communication using Socket.io.
-Implement user registration and login endpoints with proper validation.
-![Alt text](image.png)
-Use JSON Web Tokens (JWT) for user authentication.
-Implement Socket.io to handle chat between users.
+Open another terminal in folder, Also make sure mongodb is running in background.
+```shell
+cd server
+yarn start
+```
+
+Done! Now open localhost:3000 in your browser.
