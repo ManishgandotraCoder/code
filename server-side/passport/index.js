@@ -13,7 +13,6 @@ const opts = {
 const passport = (passport) => {
 	passport.use('jwt', new JWTStrategy(opts,
 		async function (jwt_payload, done) {
-			console.log("jwt_payload", jwt_payload.username)
 			const getUser = await User.findOne({ username: jwt_payload.username });
 			if (getUser) {
 				return done(null, getUser);

@@ -6,18 +6,19 @@ module.exports.login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    var token = await jwt.sign({ _id: user._id, username: user.username }, 'TOKEN4983294820KFRKJJ');
-    let resp = {
-      username: user.username,
-      _id: user._id,
-      token: token
-    }
+    console.log(user)
+    
     if (!user)
       return res.json({ msg: "Incorrect Username or Password", status: false });
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid)
       return res.json({ msg: "Incorrect Username or Password", status: false });
-    delete user.password;
+      var token = await jwt.sign({ _id: user._id, username: user.username }, 'TOKEN4983294820KFRKJJ');
+      let resp = {
+        username: user.username,
+        _id: user._id,
+        token: token
+      } 
 
 
     return res.json({
@@ -31,6 +32,10 @@ module.exports.login = async (req, res, next) => {
 module.exports.register = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
+    if (!username || !password || !email ){
+      return res.json({ msg: "Enter email , username and password", status: false });
+
+    }
     const usernameCheck = await User.findOne({ username });
     if (usernameCheck)
       return res.json({ msg: "Username already used", status: false });

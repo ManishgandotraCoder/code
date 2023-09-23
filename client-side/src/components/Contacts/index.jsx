@@ -12,7 +12,7 @@ export default function Contacts({ contacts, changeChat }) {
   const navigate = useNavigate();
   useEffect(async () => {
     const data = await JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+      localStorage.getItem('userinfo')
     );
     setCurrentUserName(data.username);
   }, []);
@@ -22,7 +22,7 @@ export default function Contacts({ contacts, changeChat }) {
   };
   const Logout = async () => {
     const id = await JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+      localStorage.getItem('userinfo')
     )._id;
     const data = await axios.get(`${logoutRoute}/${id}`,header);
     if (data.status === 200) {

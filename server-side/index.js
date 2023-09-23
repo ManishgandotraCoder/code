@@ -18,7 +18,7 @@ app.use(passprt.initialize());
 (passport)(passprt);
 app.use(bearerToken());
 
-mongoose.connect('mongodb+srv://Manish:Qd27yqNJ43hGBP-@letstalk.nviuu.mongodb.net/chat_socket?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://Manish:Qd27yqNJ43hGBP-@letstalk.nviuu.mongodb.net/chat_socket_app?retryWrites=true&w=majority')
   .then(() => {
     console.log("DB Connetion Successfull");
   })
